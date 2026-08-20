@@ -17,7 +17,15 @@ test("contains the complete HOODSUP landing-page narrative", async () => {
   assert.match(page, /RISK RUNE/);
   assert.match(page, /night-guild-story\.png/);
   assert.match(page, /hoodsup-coin-v2\.png/);
-  assert.doesNotMatch(page + layout, /Mancer|walk-sprite|mancer-walk/i);
+  assert.match(page, /mancer-walker-v1\.png/i);
+  assert.match(page, /MANCER NFT HOLDER AIRDROP/i);
+  assert.match(page, /91%/);
+  assert.match(page, /33% → 0%/);
+  assert.match(page, /HOODSUP \/ STONKBROKER/);
+  assert.match(page, /THE OATH GOES ONCHAIN/);
+  assert.match(page, /hoodsup-emblem-v1\.png/i);
+  assert.match(layout, /icon\.png/i);
+  assert.doesNotMatch(page + layout, /walk-sprite/i);
   assert.doesNotMatch(page + layout, /codex-preview|react-loading-skeleton/i);
 });
 
