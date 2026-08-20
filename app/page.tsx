@@ -12,12 +12,12 @@ const launchIntel = [
 ];
 
 const chapters = [
-  { number: "01", title: "THE BELL GOES DARK", copy: "When the daylight bell rang for the last time, the city believed the market was asleep. Under the old quarter, another shift was only beginning." },
-  { number: "02", title: "THE FIRST HOOD RISES", copy: "A lone trader pulled a hood over their face and stepped past the closed stalls. It was not a disguise. It was a promise to move without noise." },
-  { number: "03", title: "NAMES DISAPPEAR", copy: "No titles. No gurus. No one asking who arrived first. Beneath the hood, only nerve, timing and the green glint of a signal mattered." },
-  { number: "04", title: "THE LANTERN IS SHARED", copy: "The signal passed from alley to alley. One hood became ten, ten became a guild, and every raised hood carried the same message: opportunity is moving." },
-  { number: "05", title: "THE VAULT ANSWERS", copy: "At midnight the sealed vault opened—not for kings, but for those who kept watch. Hood up. Eyes open. Bag ready. Take your cut if fortune allows." },
-  { number: "06", title: "THE OATH GOES ONCHAIN", copy: "$HOODSUP carries the old midnight signal into a new market. No promise of riches—only a place for the ones willing to arrive before the crowd." },
+  { number: "01", title: "THE BELL GOES DARK", copy: "When the daylight bell rang for the last time, the city believed the market was asleep. Under the old quarter, another shift was only beginning.", image: "/assets/story-01-bell-dark.png", alt: "The final market bell rings at dusk while hooded figures descend into the old quarter" },
+  { number: "02", title: "THE FIRST HOOD RISES", copy: "A lone trader pulled a hood over their face and stepped past the closed stalls. It was not a disguise. It was a promise to move without noise.", image: "/assets/story-02-first-hood.png", alt: "A lone orange-cloaked trader raises a hood in an empty market street" },
+  { number: "03", title: "NAMES DISAPPEAR", copy: "No titles. No gurus. No one asking who arrived first. Beneath the hood, only nerve, timing and the green glint of a signal mattered.", image: "/assets/story-03-names-disappear.png", alt: "Anonymous hooded traders leave their masks and titles in a stone chamber" },
+  { number: "04", title: "THE LANTERN IS SHARED", copy: "The signal passed from alley to alley. One hood became ten, ten became a guild, and every raised hood carried the same message: opportunity is moving.", image: "/assets/story-04-lantern-shared.png", alt: "Hooded traders pass a golden lantern signal across alleys and rooftops" },
+  { number: "05", title: "THE VAULT ANSWERS", copy: "At midnight the sealed vault opened—not for kings, but for those who kept watch. Hood up. Eyes open. Bag ready. Take your cut if fortune allows.", image: "/assets/story-05-vault-answers.png", alt: "A golden vault opens before the hooded midnight guild" },
+  { number: "06", title: "THE OATH GOES ONCHAIN", copy: "$HOODSUP carries the old midnight signal into a new market. No promise of riches—only a place for the ones willing to arrive before the crowd.", image: "/assets/story-06-oath-onchain.png", alt: "The midnight signal becomes a glowing onchain network above the city" },
 ];
 
 const allocations = [
@@ -106,7 +106,22 @@ export default function Home() {
           <div className="story-lead"><p>Before charts, tickers and glowing screens, the sharpest traders met after dark. A raised hood meant the hunt was on—no names, no noise, only a signal between people who knew where opportunity was moving.</p><p>They called themselves the Midnight Guild. The city never saw their faces, but it learned to watch the rooftops: when three green lights appeared beneath a hood, the night market was about to wake.</p></div>
         </div>
         <figure className="story-art"><Image src="/assets/night-guild-story.png" alt="A hooded night guild crossing a purple market toward an open golden vault" width={2022} height={778} loading="eager" /><figcaption>One hood became ten. Ten became a crowd. Soon the city knew the rule: when the hoods go up, value is about to move.</figcaption></figure>
-        <div className="chapters">{chapters.map((chapter) => <article key={chapter.number}><span>{chapter.number}</span><h3>{chapter.title}</h3><p>{chapter.copy}</p></article>)}</div>
+        <div className="story-plates">
+          {chapters.map((chapter) => (
+            <article className="story-plate" key={chapter.number}>
+              <figure className="story-plate-art">
+                <Image src={chapter.image} alt={chapter.alt} width={1536} height={1024} sizes="(max-width: 980px) 100vw, 62vw" />
+                <figcaption>MYTH PLATE {chapter.number} · THE MIDNIGHT ARCHIVE</figcaption>
+              </figure>
+              <div className="story-plate-copy">
+                <span className="story-number">{chapter.number}</span>
+                <span className="chapter-sigil">◆ THE SIGNAL MOVES</span>
+                <h3>{chapter.title}</h3>
+                <p>{chapter.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
         <div className="myth-coda"><p>“THE MARKET REWARDS NO FACE.<br />ONLY THE ONES STILL WATCHING.”</p><div><span>THE MIDNIGHT OATH</span><p>The guild’s oldest rule survived every market: never follow a voice you cannot verify, never reveal the vault before the bell, and never lower your hood while the signal is still moving.</p></div></div>
       </section>
 

@@ -23,6 +23,12 @@ test("contains the complete HOODSUP landing-page narrative", async () => {
   assert.match(page, /33% → 0%/);
   assert.match(page, /HOODSUP \/ STONKBROKER/);
   assert.match(page, /THE OATH GOES ONCHAIN/);
+  assert.match(page, /story-01-bell-dark\.png/);
+  assert.match(page, /story-02-first-hood\.png/);
+  assert.match(page, /story-03-names-disappear\.png/);
+  assert.match(page, /story-04-lantern-shared\.png/);
+  assert.match(page, /story-05-vault-answers\.png/);
+  assert.match(page, /story-06-oath-onchain\.png/);
   assert.match(page, /hoodsup-emblem-v1\.png/i);
   assert.match(layout, /icon\.png/i);
   assert.doesNotMatch(page + layout, /walk-sprite/i);
