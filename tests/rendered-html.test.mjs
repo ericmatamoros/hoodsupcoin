@@ -30,7 +30,7 @@ test("contains the complete HOODSUP landing-page narrative", async () => {
   assert.match(page, /story-05-vault-answers\.png/);
   assert.match(page, /story-06-oath-onchain\.png/);
   assert.match(page, /hoodsup-emblem-v1\.png/i);
-  assert.match(layout, /icon\.png/i);
+  assert.match(layout, /icon-v2\.png/i);
   assert.doesNotMatch(page + layout, /walk-sprite/i);
   assert.doesNotMatch(page + layout, /codex-preview|react-loading-skeleton/i);
 });

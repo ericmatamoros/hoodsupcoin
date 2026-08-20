@@ -25,9 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "$HOODSUP — Hoods Up. Bags Out.",
     description,
     icons: {
-      icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
-      shortcut: [{ url: "/icon.png", type: "image/png" }],
-      apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+      icon: [{ url: "/icon-v2.png", type: "image/png", sizes: "512x512" }],
+      shortcut: [{ url: "/icon-v2.png", type: "image/png" }],
+      apple: [{ url: "/apple-icon-v2.png", type: "image/png", sizes: "180x180" }],
     },
     openGraph: {
       type: "website",
