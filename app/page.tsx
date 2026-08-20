@@ -1,28 +1,43 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
-const lore = [
-  { number: "01", title: "THE MANCERS", copy: "Pixel-born collectors, wanderers and spellcasters. Every cloak holds a story. Every shadow hides a face." },
-  { number: "02", title: "THE SIGNAL", copy: "One ritual travelled through the collection: hoods up. A tiny gesture became a banner the whole realm could wear." },
-  { number: "03", title: "THE COIN", copy: "$HOODSUP turns the signal into a coin — built for the Mancer community, powered by lore, and ready to leave the cave." },
+const launchIntel = [
+  ["VENUE", "STONKBONKER"],
+  ["STATUS", "PRE-LAUNCH"],
+  ["CONTRACT", "NOT LIVE"],
+  ["SOURCE", "@HOODSUPCOIN"],
 ];
 
-const launchFacts = [["SUPPLY", "SEALED"], ["DISTRIBUTION", "AT LAUNCH"], ["LIQUIDITY", "ONCHAIN"], ["CONTRACT", "VERIFIED"]];
+const chapters = [
+  {
+    number: "01",
+    title: "THE BELL GOES DARK",
+    copy: "Daylight traders close their screens. The city quiets. Beneath the last glowing ticker, a different shift begins.",
+  },
+  {
+    number: "02",
+    title: "THE HOOD GOES UP",
+    copy: "A raised hood blocks the noise. No names. No gurus. Just nerve, timing and a signal shared by the ones still moving.",
+  },
+  {
+    number: "03",
+    title: "THE VAULT ANSWERS",
+    copy: "The old rule is simple: hood up, lock in, earn your cut. No promise of riches — only the courage to take your shot.",
+  },
+];
 
-const roadmap = [
-  ["I", "THE WHISPER", "Lore awakens. The site opens. The hoods gather on X."],
-  ["II", "THE REVEAL", "Final launch parameters and the verified contract are published."],
-  ["III", "THE BONK", "$HOODSUP steps out through STONKBONKER."],
-  ["IV", "THE WALK", "Community quests, pixel drops and whatever the Mancers conjure next."],
+const verificationSteps = [
+  ["01", "CHECK THE SOURCE", "Start at @hoodsupcoin. Screenshots, replies and lookalike accounts are not the signal."],
+  ["02", "MATCH THE CONTRACT", "The exact contract will appear on this website and X at launch. If one character differs, walk away."],
+  ["03", "USE THE OFFICIAL ROUTE", "Enter only through the STONKBONKER link published by HOODSUP. Never trust a link dropped into your DMs."],
 ];
 
 const faqs = [
-  ["What is $HOODSUP?", "$HOODSUP is a community meme coin born from the hoods-up spirit of the Mancer NFT collection — a pixel-art signal for the people already in the shadows and everyone arriving next."],
-  ["Where will it launch?", "$HOODSUP is preparing to launch through STONKBONKER. The official link will be published here and on @hoodsupcoin when it is ready."],
-  ["What are the tokenomics?", "Final supply, allocation, liquidity and fee details are still sealed. This page will show the confirmed numbers before trading begins — never invented placeholders."],
-  ["Where is the contract address?", "There is no public contract address yet. Trust only the address posted on this website and the official @hoodsupcoin X account at launch."],
-  ["Is this financial advice?", "No. $HOODSUP is a meme coin and crypto is volatile. Do your own research and never risk more than you can afford to lose."],
+  ["Where does $HOODSUP launch?", "$HOODSUP is preparing to launch through STONKBONKER. The official route will be posted here and on @hoodsupcoin."],
+  ["Is the contract live?", "No. There is no public contract address yet. Anything claiming otherwise is not $HOODSUP."],
+  ["Where are the final token details?", "Confirmed supply, distribution, liquidity and fee details will replace this pre-launch notice before trading begins."],
 ];
 
 export default function Home() {
@@ -38,73 +53,132 @@ export default function Home() {
   return (
     <main id="top" className={revealed ? "site is-revealed" : "site"}>
       <div className="noise" aria-hidden="true" />
-      <div className="walker" aria-hidden="true"><span /></div>
 
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="HOODSUP home"><span className="brand-rune">H</span><span>$HOODSUP</span></a>
-        <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}><span /><span /><span /></button>
+        <a className="brand" href="#top" aria-label="HOODSUP home">
+          <span className="brand-hood" aria-hidden="true"><i /><i /><i /></span>
+          <span>$HOODSUP</span>
+        </a>
+        <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}>
+          <span /><span /><span />
+        </button>
         <nav className={menuOpen ? "nav-links is-open" : "nav-links"} aria-label="Main navigation">
-          <a href="#lore">Lore</a><a href="#hoodonomics">Hoodonomics</a><a href="#launch">Launch</a><a href="#roadmap">Roadmap</a><a href="#faq">FAQ</a>
+          <a href="#story">Story</a>
+          <a href="#launch">Launch</a>
+          <a href="#verify">Verify</a>
+          <a href="#faq">FAQ</a>
           <a className="nav-x" href="https://x.com/hoodsupcoin" target="_blank" rel="noreferrer">X ↗</a>
         </nav>
       </header>
 
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-art" aria-hidden="true" /><div className="hero-vignette" aria-hidden="true" />
-        <div className="pixel-stars" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <i key={index} />)}</div>
+        <div className="hero-art" aria-hidden="true" />
+        <div className="hero-vignette" aria-hidden="true" />
+        <div className="hero-grid" aria-hidden="true" />
+
         <div className="hero-content">
-          <p className="eyebrow"><span /> FROM THE MANCER SHADOWS <span /></p>
-          <h1 id="hero-title"><span>HOODS UP.</span><strong>COIN OUT.</strong></h1>
-          <p className="hero-copy">A pixel-born meme coin forged from the most iconic move in the Mancer realm. The hood is rising. The signal is spreading.</p>
+          <p className="eyebrow"><span /> THE MIDNIGHT SIGNAL</p>
+          <h1 id="hero-title"><span>HOODS UP.</span><strong>BAGS OUT.</strong></h1>
+          <p className="hero-copy">When the lights go down, the hoods go up. $HOODSUP is the onchain signal for the ones who move before the crowd.</p>
           <div className="hero-actions">
-            <button className="pixel-button primary" type="button" onClick={() => setRevealed(true)}><span>{revealed ? "THE COIN AWAKENS" : "LIFT THE HOOD"}</span></button>
-            <a className="pixel-button ghost" href="https://x.com/hoodsupcoin" target="_blank" rel="noreferrer">FOLLOW THE SIGNAL ↗</a>
+            <a className="pixel-button primary" href="https://x.com/hoodsupcoin" target="_blank" rel="noreferrer">FOLLOW THE SIGNAL ↗</a>
+            <a className="pixel-button ghost" href="#story">READ THE MYTH ↓</a>
           </div>
-          <div className="launch-status" role="status"><span className="status-light" /><span>PRE-LAUNCH RITUAL ACTIVE</span><b>CA: SEALED</b></div>
+          <div className="launch-status" role="status">
+            <span className="status-light" />
+            <span>LAUNCHING ON STONKBONKER</span>
+            <b>CONTRACT: NOT LIVE</b>
+          </div>
         </div>
-        <button className="relic" type="button" onClick={() => setRevealed(true)} aria-label="Reveal the HOODSUP coin"><span className="relic-ring" /><span className="relic-core">H</span><span className="relic-copy">CLICK TO REVEAL</span></button>
-        <a className="scroll-cue" href="#lore">SCROLL INTO THE REALM <span>↓</span></a>
+
+        <button className="hero-coin" type="button" onClick={() => setRevealed(true)} aria-label="Reveal the HOODSUP coin">
+          <Image src="/assets/hoodsup-coin-v2.png" alt="A heavy gold HOODSUP coin embossed with a hooded figure" width={1254} height={1254} priority />
+          <span>{revealed ? "THE SIGNAL IS LIVE" : "CLICK TO REVEAL"}</span>
+        </button>
       </section>
 
-      <div className="marquee" aria-label="HOODSUP highlights"><div><span>✦ PIXEL BORN</span><span>✦ MANCER MADE</span><span>✦ HOODS UP</span><span>✦ STONKBONKER LAUNCH</span><span>✦ CA SEALED</span><span>✦ PIXEL BORN</span><span>✦ MANCER MADE</span><span>✦ HOODS UP</span><span>✦ STONKBONKER LAUNCH</span></div></div>
-
-      <section id="lore" className="section lore-section">
-        <div className="section-kicker">{"// ORIGIN STORY"}</div>
-        <div className="section-heading split-heading"><h2>EVERY COIN<br />NEEDS A <em>MYTH.</em></h2><p>This one started with a collection of hooded pixel Mancers and a gesture everyone understood without saying a word.</p></div>
-        <div className="lore-grid">{lore.map((item) => <article className="lore-card" key={item.number}><span className="card-number">{item.number}</span><div className="mini-hood" aria-hidden="true"><span /></div><h3>{item.title}</h3><p>{item.copy}</p></article>)}</div>
-      </section>
-
-      <section className="hoodwalk" aria-label="The hoodwalk">
-        <div className="hoodwalk-copy"><span>{"// THE HOODWALK"}</span><h2>ONE MANCER.<br />ONE SIGNAL.<br /><em>EVERY SCREEN.</em></h2><p>Our pixel wanderer keeps moving while the realm gets ready. Catch the three green eyes crossing your screen.</p></div>
-        <div className="walk-stage" aria-hidden="true"><div className="moon">H</div><div className="mountain mountain-one" /><div className="mountain mountain-two" /><div className="walk-sprite" /><div className="walk-ground" /></div>
-      </section>
-
-      <section id="hoodonomics" className="section token-section">
-        <div className="section-kicker">{"// HOODONOMICS"}</div>
-        <div className="token-layout">
-          <div className="token-copy"><h2>NO FAKE NUMBERS.<br /><em>ONLY ONCHAIN TRUTH.</em></h2><p>The final token structure is still under the hood. Supply, distribution, fees and liquidity details will appear here once confirmed — before the contract goes live.</p><div className="truth-note"><span>!</span><p>Until then, any address claiming to be $HOODSUP is an impostor in a cheap cloak.</p></div></div>
-          <div className="coin-seal" aria-label="HOODSUP tokenomics sealed until launch"><div className="coin-orbit"><span>HOODSUP • HOODSUP • HOODSUP • </span></div><div className="coin-face"><small>PRE-LAUNCH</small><strong>H</strong><b>SEALED</b></div></div>
+      <div className="marquee" aria-label="HOODSUP highlights">
+        <div>
+          <span>✦ THE MIDNIGHT GUILD</span><span>✦ HOOD UP · LOCK IN · EARN YOUR CUT</span><span>✦ STONKBONKER</span><span>✦ CONTRACT NOT LIVE</span>
+          <span>✦ THE MIDNIGHT GUILD</span><span>✦ HOOD UP · LOCK IN · EARN YOUR CUT</span><span>✦ STONKBONKER</span><span>✦ CONTRACT NOT LIVE</span>
         </div>
-        <div className="fact-grid">{launchFacts.map(([label, value]) => <div className="fact-card" key={label}><span>{label}</span><strong>{value}</strong></div>)}</div>
+      </div>
+
+      <section id="story" className="story-section">
+        <div className="story-intro">
+          <p className="section-kicker">{"// THE NIGHT GUILD"}</p>
+          <h2>THE MYTH OF THE<br /><em>MIDNIGHT HOOD.</em></h2>
+          <p className="story-lead">Before charts, tickers and glowing screens, the sharpest traders met after dark. A raised hood meant the hunt was on — no names, no noise, just a signal between people who knew where opportunity was moving.</p>
+        </div>
+
+        <figure className="story-art">
+          <Image src="/assets/night-guild-story.png" alt="A hooded night guild crossing a purple market toward an open golden vault" width={2022} height={778} />
+          <figcaption>One hood became ten. Ten became a crowd. Soon the city knew the rule: when the hoods go up, value is about to move.</figcaption>
+        </figure>
+
+        <div className="chapters">
+          {chapters.map((chapter) => (
+            <article key={chapter.number}>
+              <span>{chapter.number}</span>
+              <h3>{chapter.title}</h3>
+              <p>{chapter.copy}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section id="launch" className="launch-section"><div className="launch-window"><div className="launch-pixels" aria-hidden="true" /><p className="section-kicker">{"// THE PORTAL"}</p><p className="launch-overline">LAUNCHING THROUGH</p><h2>STONK<span>BONKER</span></h2><p>When the signal is ready, the contract and official launch route will be revealed here and on X. Bookmark the source. Ignore the mimics.</p><a className="pixel-button primary" href="https://x.com/hoodsupcoin" target="_blank" rel="noreferrer">WATCH @HOODSUPCOIN ↗</a></div></section>
-
-      <section id="roadmap" className="section roadmap-section">
-        <div className="section-kicker">{"// THE PATH"}</div>
-        <div className="section-heading split-heading"><h2>THE HOOD<br /><em>KEEPS MOVING.</em></h2><p>A simple path from whisper to launch — with no fake utility or impossible promises stitched into the cloak.</p></div>
-        <div className="roadmap-list">{roadmap.map(([phase, title, copy], index) => <article key={phase} className={index === 0 ? "roadmap-item current" : "roadmap-item"}><span className="phase">PHASE {phase}</span><span className="roadmap-dot" /><h3>{title}</h3><p>{copy}</p><b>{index === 0 ? "ACTIVE" : "LOCKED"}</b></article>)}</div>
+      <section id="launch" className="launch-section">
+        <div className="launch-copy">
+          <p className="section-kicker">{"// LAUNCH INTEL"}</p>
+          <h2>FACTS BEFORE<br /><em>FOMO.</em></h2>
+          <p>Until the final parameters are confirmed, this is the only launch information that matters. No invented numbers. No mystery contract. No fake countdown.</p>
+        </div>
+        <div className="intel-panel">
+          {launchIntel.map(([label, value]) => (
+            <div className="intel-row" key={label}><span>{label}</span><strong>{value}</strong></div>
+          ))}
+          <a href="https://x.com/hoodsupcoin" target="_blank" rel="noreferrer">WATCH THE OFFICIAL SOURCE ↗</a>
+        </div>
       </section>
 
-      <section id="faq" className="section faq-section">
-        <div className="section-kicker">{"// QUESTIONS FROM THE CAVE"}</div>
-        <div className="faq-layout"><div><h2>ASK THE<br /><em>MANCER.</em></h2><p className="faq-intro">No smoke. No mirrors. Just the answers we can verify today.</p></div><div className="faq-list">{faqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary><span>{question}</span><b>+</b></summary><p>{answer}</p></details>)}</div></div>
-        <div className="risk-box"><span>⚠ RISK RUNE</span><p>$HOODSUP is a meme coin with no promise of financial return. Crypto assets are volatile, and you may lose everything you put in. Nothing on this site is financial, legal or tax advice. Verify every link and contract address through the official channels before interacting.</p></div>
+      <section id="verify" className="verify-section">
+        <div className="verify-heading">
+          <p className="section-kicker">{"// VERIFY THE SIGNAL"}</p>
+          <h2>DON&apos;T GET<br /><em>COUNTERFEIT HOODS.</em></h2>
+        </div>
+        <div className="verify-list">
+          {verificationSteps.map(([number, title, copy]) => (
+            <article key={number}>
+              <span>{number}</span>
+              <div><h3>{title}</h3><p>{copy}</p></div>
+            </article>
+          ))}
+        </div>
       </section>
+
+      <section id="faq" className="faq-section">
+        <div className="faq-heading">
+          <p className="section-kicker">{"// STRAIGHT ANSWERS"}</p>
+          <h2>READ THE<br /><em>RUNES.</em></h2>
+        </div>
+        <div className="faq-list">
+          {faqs.map(([question, answer], index) => (
+            <details key={question} open={index === 0}>
+              <summary><span>{question}</span><b>+</b></summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <aside className="risk-line">
+        <b>⚠ RISK RUNE</b>
+        <p>$HOODSUP is a meme coin with no promise of financial return. Crypto is volatile and you may lose everything you put in. Verify every link and contract before interacting.</p>
+      </aside>
 
       <footer>
-        <div className="footer-mark"><span className="brand-rune">H</span><div><strong>$HOODSUP</strong><small>THE SIGNAL FROM THE SHADOWS</small></div></div>
-        <div className="footer-cta"><h2>THE HOOD IS RISING.</h2><a href="https://x.com/hoodsupcoin" target="_blank" rel="noreferrer">JOIN THE SIGNAL ON X ↗</a></div>
+        <div className="footer-brand"><span className="brand-hood" aria-hidden="true"><i /><i /><i /></span><strong>$HOODSUP</strong></div>
+        <div className="footer-cta"><h2>HOOD UP.<br />EYES OPEN.</h2><a href="https://x.com/hoodsupcoin" target="_blank" rel="noreferrer">JOIN THE NIGHT SHIFT ↗</a></div>
         <div className="footer-bottom"><span>© 2026 HOODSUP. ALL HOODS RESERVED.</span><span>MEME COIN · NOT FINANCIAL ADVICE</span></div>
       </footer>
     </main>

@@ -1,6 +1,6 @@
 # $HOODSUP
 
-The official pixel-art launch site for $HOODSUP, a community meme coin born from the hoods-up spirit of the Mancer NFT collection.
+The official pixel-art launch site for $HOODSUP and the myth of the Midnight Guild.
 
 ## Local development
 

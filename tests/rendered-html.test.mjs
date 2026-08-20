@@ -11,11 +11,13 @@ test("contains the complete HOODSUP landing-page narrative", async () => {
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
   ]);
 
-  assert.match(layout, /\$HOODSUP — Hoods Up\. Coin Out\./i);
+  assert.match(layout, /\$HOODSUP — Hoods Up\. Bags Out\./i);
   assert.match(page, /HOODS UP\./);
   assert.match(page, /STONK.*BONKER/s);
   assert.match(page, /RISK RUNE/);
-  assert.match(page, /walk-sprite/);
+  assert.match(page, /night-guild-story\.png/);
+  assert.match(page, /hoodsup-coin-v2\.png/);
+  assert.doesNotMatch(page + layout, /Mancer|walk-sprite|mancer-walk/i);
   assert.doesNotMatch(page + layout, /codex-preview|react-loading-skeleton/i);
 });
 

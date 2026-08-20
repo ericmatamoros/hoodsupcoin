@@ -18,22 +18,22 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "hoodsupcoin.vercel.app";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const base = new URL(`${protocol}://${host}`);
-  const description = "A pixel-born meme coin forged from the hoods-up spirit of the Mancer NFT collection. Launching through STONKBONKER.";
+  const description = "The onchain signal of the Midnight Guild. Hood up, lock in, and follow $HOODSUP toward its STONKBONKER launch.";
 
   return {
     metadataBase: base,
-    title: "$HOODSUP — Hoods Up. Coin Out.",
+    title: "$HOODSUP — Hoods Up. Bags Out.",
     description,
     icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
     openGraph: {
       type: "website",
-      title: "$HOODSUP — Hoods Up. Coin Out.",
+      title: "$HOODSUP — Hoods Up. Bags Out.",
       description,
-      images: [{ url: new URL("/og.png", base).toString(), width: 1734, height: 907, alt: "$HOODSUP — Hoods Up. Coin Out." }],
+      images: [{ url: new URL("/og.png", base).toString(), width: 1733, height: 908, alt: "$HOODSUP — Hoods Up. Bags Out." }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "$HOODSUP — Hoods Up. Coin Out.",
+      title: "$HOODSUP — Hoods Up. Bags Out.",
       description,
       images: [new URL("/og.png", base).toString()],
       creator: "@hoodsupcoin",
